@@ -1,0 +1,12 @@
+{
+  "name": "flip-tile",
+  "version": "1.0.0",
+  "description": "A simple flipping tile with style-able and slottable front and back faces.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "keywords": ["web-component", "flipping-tile", "flip-tile"],
+  "author": "Jacob Skoog <jacob.skoog1002@gmail.com>",
+  "license": "ISC"
+}
