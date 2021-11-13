@@ -1,12 +1,24 @@
 {
   "name": "flip-tile",
   "version": "1.0.0",
-  "description": "A simple flipping tile with style-able and slottable front and back faces.",
+  "description": "A simple web component depicting a flippable tile. The tile has stylable front and back faces that can both take slottable content.'",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No test I'm afraid\""
   },
-  "keywords": ["web-component", "flipping-tile", "flip-tile"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkoogJacob/flip-tile.git"
+  },
+  "keywords": [
+    "web-component",
+    "vanilla-js",
+    "flipping-tile"
+  ],
   "author": "Jacob Skoog <jacob.skoog1002@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkoogJacob/flip-tile/issues"
+  },
+  "homepage": "https://github.com/SkoogJacob/flip-tile#readme"
 }

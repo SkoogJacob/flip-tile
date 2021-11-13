@@ -25,6 +25,8 @@
  */
 
 const lnuImg = new URL('./pictures/lnu-symbol.png', import.meta.url).href
+
+// ############################# Defining the template element
 const template = document.createElement('template')
 /*
  * Imagining the custom element as a div containing the front of the card and the back of the card, only displaying one
@@ -119,6 +121,7 @@ template.innerHTML = `
         backface-visibility: visible;
     }
   </style>
+  
   <div part="tile" id="tile">
     <div part="back" id="back">
         <slot name="back-content"></slot>
@@ -128,6 +131,7 @@ template.innerHTML = `
     </div>
   </div>
 `
+// ######################### END OF TEMPLATE ###########################################
 
 customElements.define('flip-tile',
   /**
