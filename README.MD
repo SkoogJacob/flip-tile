@@ -29,7 +29,7 @@ Toggling this attribute will flip the card. The card is facedown by default.
 
 ### hidden
 
-If this attribute is present the element will not be flipable, and both faces
+If this attribute is present the element will be flipable, but both faces
 will be invisible.
 
 ### disable
