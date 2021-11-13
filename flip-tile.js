@@ -105,7 +105,6 @@ template.innerHTML = `
     }
     :host([hidden]) #tile {
         border: 1px dotted var(--lighter-grey);
-        cursor: default;
         box-shadow: 0 5px 5px var(--lighter-grey);
     }
     :host([hidden]) #tile:hover {
@@ -114,8 +113,11 @@ template.innerHTML = `
     :host([disabled]) #tile {
         cursor: default;
         border: 2px dashed var(--light-grey);
-        opacity: 0.5;
-     }
+        opacity: 0.6;
+    }
+    :host([face-up][disabled]) #front { /* Keeps the front face visible if the card is face-up when disabled */
+        backface-visibility: visible;
+    }
   </style>
   <div part="tile" id="tile">
     <div part="back" id="back">
@@ -126,10 +128,12 @@ template.innerHTML = `
     </div>
   </div>
 `
-/**
- * This class defines the actual element.
- */
-class FlipTile extends HTMLElement {
+
+customElements.define('flip-tile',
+  /**
+   * The custom element
+   */
+  class extends HTMLElement {
   /**
    * The container for the tile.
    *
@@ -220,15 +224,27 @@ class FlipTile extends HTMLElement {
   }
 
   /**
+   * Toggles a boolean attribute, removing it if it was present and adding it if it was absent.
+   * Overriding toggleAttribute to prevent face-up from being toggled if disabled is turned on.
+   *
+   * @param {string} qualifiedName The name of the attribute
+   * @param {boolean} force if true, will force the toggled attribute to be present, regardless of whether it was there
+   * to begin with.
+   */
+  toggleAttribute (qualifiedName, force = false) {
+    // If qualifiedName === 'face-up' AND this.hasAttribute('disabled'): do nothing
+    if (!(qualifiedName === 'face-up' && this.hasAttribute('disabled'))) {
+      if (this.hasAttribute(qualifiedName) && !force) this.removeAttribute(qualifiedName)
+      else if (!this.hasAttribute(qualifiedName) || force) this.setAttribute(qualifiedName, '')
+    }
+  }
+
+  /**
    * Toggles the face-up and face-down attributes.
    *
    * @param {MouseEvent} event the event fired to this event handler.
    */
   flip (event) {
-    if (!this.hasAttribute('disabled') && !this.hasAttribute('hidden') && !event.altKey && !event.ctrlKey && !event.shiftKey) {
-      this.toggleAttribute('face-up')
-    }
+    this.toggleAttribute('face-up')
   }
-}
-customElements.define('flip-tile', FlipTile)
-export default { FlipTile }
+  })
