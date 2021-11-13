@@ -2,6 +2,12 @@
  * Index script file for the component
  *
  * @author Jacob Skoog <js224wv@student.lnu.se>
- * @version 1.0.0
+ * @version 1.0.1
  */
-import './flip-tile.js'
+import FlipTile from "./flip-tile.js";
+
+function defineFlipTile() {
+    customElements.define('flip-tile', FlipTile)
+}
+
+export default defineFlipTile;

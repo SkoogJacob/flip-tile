@@ -21,7 +21,7 @@
  * ---- used to style a hidden card
  *
  * @author Jacob Skoog
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const lnuImg = new URL('./pictures/lnu-symbol.png', import.meta.url).href
@@ -133,11 +133,10 @@ template.innerHTML = `
 `
 // ######################### END OF TEMPLATE ###########################################
 
-customElements.define('flip-tile',
-  /**
-   * The custom element
-   */
-  class extends HTMLElement {
+/**
+ * The custom element class
+ */
+export default class FlipTile extends HTMLElement {
   /**
    * The container for the tile.
    *
@@ -170,7 +169,7 @@ customElements.define('flip-tile',
   /**
    * Simple constructor to initialise private fields.
    */
-  constructor () {
+  constructor() {
     super()
     this.#tile = null
     this.#front = null
@@ -184,7 +183,7 @@ customElements.define('flip-tile',
    *
    * @returns {string[]} An array of observed attributes.
    */
-  static get observedAttributes () {
+  static get observedAttributes() {
     return ['face-up']
   }
 
@@ -195,10 +194,10 @@ customElements.define('flip-tile',
    * @param {string} oldValue The old value of the attribute.
    * @param {string} newValue The new value of the attribute.
    */
-  attributeChangedCallback (name, oldValue, newValue) {
+  attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'face-up') {
       this.dispatchEvent(new CustomEvent('flip', {
-        detail: { innerHTML: this.innerHTML.trim() },
+        detail: {innerHTML: this.innerHTML.trim()},
         bubbles: true
       }))
     }
@@ -208,8 +207,8 @@ customElements.define('flip-tile',
    * Putting most of the element initialisation in here as I find some things don't initialise right when put in the
    * constructor if the element is instantiated by document.createElement().
    */
-  connectedCallback () {
-    this.#shadow = this.attachShadow({ mode: 'open' })
+  connectedCallback() {
+    this.#shadow = this.attachShadow({mode: 'open'})
     this.#shadow.appendChild(template.content.cloneNode(true))
     this.#tile = this.#shadow.getElementById('tile')
     this.#front = this.#shadow.getElementById('front')
@@ -223,7 +222,7 @@ customElements.define('flip-tile',
   /**
    * Disconnects the event listeners.
    */
-  disconnectedCallback () {
+  disconnectedCallback() {
     this.#tile.removeEventListener('click', this.#clickListener)
   }
 
@@ -235,7 +234,7 @@ customElements.define('flip-tile',
    * @param {boolean} force if true, will force the toggled attribute to be present, regardless of whether it was there
    * to begin with.
    */
-  toggleAttribute (qualifiedName, force = false) {
+  toggleAttribute(qualifiedName, force = false) {
     // If qualifiedName === 'face-up' AND this.hasAttribute('disabled'): do nothing
     if (!(qualifiedName === 'face-up' && this.hasAttribute('disabled'))) {
       if (this.hasAttribute(qualifiedName) && !force) this.removeAttribute(qualifiedName)
@@ -248,7 +247,7 @@ customElements.define('flip-tile',
    *
    * @param {MouseEvent} event the event fired to this event handler.
    */
-  flip (event) {
+  flip(event) {
     this.toggleAttribute('face-up')
   }
-  })
+}
