@@ -24,9 +24,6 @@
  * @version 1.0.7
  */
 
-//const lnuImg = new URL('pictures/lnu-symbol.png', import.meta.url).href
-import lnuImg from './pictures/lnu-symbol.png' // Specific to vite. Which might be bad? whoopsie doops I guess.
-
 // ############################# Defining the template element
 const template = document.createElement('template')
 /*
@@ -92,10 +89,6 @@ template.innerHTML = `
         height: 100%;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
-    }
-    #back {
-        background: transparent url(${lnuImg}) no-repeat center center;
-        background-size: contain;
     }
     slot>* {
         max-height: 100%;

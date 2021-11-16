@@ -2,11 +2,6 @@
 
 This readme will document how the flip-tile component can be used.
 
-## !NOTE!
-
-To import the standard background image it uses [Vite's import asset as URL](https://vitejs.dev/guide/assets.html).
-So to use this module the build environment needs to support this syntax.
-
 ## Overview
 
 The flip tile is a custom element with a front and a back. The element will
@@ -83,5 +78,3 @@ This slot can be used to slot in content for the front of the tile.
 ### back-content
 
 This slot can be used to slot in content for the back of the tile.  
-NOTE: if you put content in the back-content slot you probably want to override
-the background css rule to get rid of the logo on the back of the tile.
