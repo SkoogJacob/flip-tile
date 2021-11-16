@@ -181,11 +181,11 @@ export default class FlipTile extends HTMLElement {
   constructor() {
     super()
     this.#shadow = this.attachShadow({mode: 'open'})
-    this.#tile = null
-    this.#front = null
-    this.#back = null
-    this.#shadow = null
-    this.#clickListener = null
+    this.#shadow.appendChild(template.content.cloneNode(true))
+    this.#tile = this.#shadow.getElementById('tile')
+    this.#front = this.#shadow.getElementById('front')
+    this.#back = this.#shadow.getElementById('back')
+    this.#clickListener = this.flip.bind(this)
   }
 
   /**
@@ -218,13 +218,8 @@ export default class FlipTile extends HTMLElement {
    * constructor if the element is instantiated by document.createElement().
    */
   connectedCallback() {
-    this.#shadow.appendChild(template.content.cloneNode(true))
-    this.#tile = this.#shadow.getElementById('tile')
-    this.#front = this.#shadow.getElementById('front')
-    this.#back = this.#shadow.getElementById('back')
     if (!this.hasAttribute('tabindex')) this.setAttribute('tabindex', '0')
 
-    this.#clickListener = this.flip.bind(this)
     this.#tile.addEventListener('click', this.#clickListener)
   }
 
