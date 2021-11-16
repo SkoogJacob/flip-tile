@@ -2,6 +2,11 @@
 
 This readme will document how the flip-tile component can be used.
 
+## !NOTE!
+
+To import the standard background image it uses [Vite's import asset as URL](https://vitejs.dev/guide/assets.html).
+So to use this module the build environment needs to support this syntax.
+
 ## Overview
 
 The flip tile is a custom element with a front and a back. The element will
