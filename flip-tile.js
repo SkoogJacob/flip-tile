@@ -21,7 +21,7 @@
  * ---- used to style a hidden card
  *
  * @author Jacob Skoog
- * @version 1.0.5
+ * @version 1.0.6
  */
 
 //const lnuImg = new URL('pictures/lnu-symbol.png', import.meta.url).href
@@ -180,6 +180,7 @@ export default class FlipTile extends HTMLElement {
    */
   constructor() {
     super()
+    this.#shadow = this.attachShadow({mode: 'open'})
     this.#tile = null
     this.#front = null
     this.#back = null
@@ -217,7 +218,6 @@ export default class FlipTile extends HTMLElement {
    * constructor if the element is instantiated by document.createElement().
    */
   connectedCallback() {
-    this.#shadow = this.attachShadow({mode: 'open'})
     this.#shadow.appendChild(template.content.cloneNode(true))
     this.#tile = this.#shadow.getElementById('tile')
     this.#front = this.#shadow.getElementById('front')
