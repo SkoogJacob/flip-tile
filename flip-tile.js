@@ -171,7 +171,7 @@ export default class FlipTile extends HTMLElement {
    */
   #shadow
   /**
-   * The event listener for the click (as it is created by bind).
+   * The event listener for the click (as it is created by bind, saving a pointer to it allows for easy deletion).
    */
   #clickListener
 
@@ -219,6 +219,7 @@ export default class FlipTile extends HTMLElement {
    */
   connectedCallback() {
     if (!this.hasAttribute('tabindex')) this.setAttribute('tabindex', '0')
+    if (!this.hasAttribute('role')) this.setAttribute('role', 'button')
 
     this.#tile.addEventListener('click', this.#clickListener)
   }
