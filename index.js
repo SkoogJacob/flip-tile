@@ -2,7 +2,7 @@
  * Index script file for the component
  *
  * @author Jacob Skoog <js224wv@student.lnu.se>
- * @version 1.0.3
+ * @version 1.0.4
  */
 import FlipTile from "./flip-tile.js";
 

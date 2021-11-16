@@ -21,7 +21,7 @@
  * ---- used to style a hidden card
  *
  * @author Jacob Skoog
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 //const lnuImg = new URL('pictures/lnu-symbol.png', import.meta.url).href
@@ -98,12 +98,12 @@ template.innerHTML = `
         background-size: contain;
     }
     slot>* {
-        max-height: 90%;
-        max-width: 90%;
+        max-height: 100%;
+        max-width: 100%;
     }
     ::slotted(img) {
-        max-width: 90%;
-        max-height: 90%;
+        max-width: 100%;
+        max-height: 100%;
     }
     :host([face-up]) #tile {
         transform: rotateY(180deg);
