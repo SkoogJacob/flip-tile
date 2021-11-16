@@ -21,7 +21,7 @@
  * ---- used to style a hidden card
  *
  * @author Jacob Skoog
- * @version 1.0.6
+ * @version 1.0.7
  */
 
 //const lnuImg = new URL('pictures/lnu-symbol.png', import.meta.url).href
