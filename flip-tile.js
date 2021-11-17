@@ -30,17 +30,15 @@ const template = document.createElement('template')
  * Imagining the custom element as a div containing the front of the card and the back of the card, only displaying one
  * at a time.
  */
+const darkGrey = '#202020'
+const lightGrey = '#909090'
+const length = '100px'
+const radius = '10px'
 template.innerHTML = `
   <style> /* TODO: see if it is possible to make focus styling to work */
     :host {
-        --dark-grey: #202020;
-        --light-grey: #909090;
-        --lighter-grey: #a5a5a5;
-        --l: 100;
-        --length: 100px;
-        --radius: 10px;
-        height: var(--length);
-        width: var(--length);
+        height: ${length};
+        width: ${length};
         display: block;
         margin: 5px;
         /* Flippity Tippities */
@@ -54,10 +52,10 @@ template.innerHTML = `
         position: relative;
         height: 100%; 
         width: 100%;
-        border: 2px solid var(--dark-grey);
+        border: 2px solid ${darkGrey};
         cursor: pointer;
-        border-radius: var(--radius);
-        box-shadow: 0 5px 5px var(--light-grey);
+        border-radius: ${radius};
+        box-shadow: 0 5px 5px ${lightGrey};
         display: block;
         background-color: ghostwhite;
         
@@ -114,7 +112,7 @@ template.innerHTML = `
     }
     :host([disabled]) #tile {
         cursor: default;
-        border: 2px dashed var(--light-grey);
+        border: 2px dashed ${lightGrey};
         opacity: 0.6;
     }
     :host([face-up][disabled]) #front { /* Keeps the front face visible if the card is face-up when disabled */
