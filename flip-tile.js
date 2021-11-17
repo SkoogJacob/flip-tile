@@ -21,7 +21,7 @@
  * ---- used to style a hidden card
  *
  * @author Jacob Skoog
- * @version 1.0.7
+ * @version 1.0.8
  */
 
 // ############################# Defining the template element
@@ -101,18 +101,16 @@ template.innerHTML = `
     :host([face-up]) #tile {
         transform: rotateY(180deg);
     }
+    /*
     :host([hidden]) #front, :host([hidden]) #back {
         opacity: 0;
     }
+    */
     :host #tile:hover {
         border: 3px solid black;
     }
     :host([hidden]) #tile {
-        border: 1px dotted var(--lighter-grey);
-        box-shadow: 0 5px 5px var(--lighter-grey);
-    }
-    :host([hidden]) #tile:hover {
-        border-style: solid;
+        display: none;
     }
     :host([disabled]) #tile {
         cursor: default;
