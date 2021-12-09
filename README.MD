@@ -18,6 +18,19 @@ The flip has an animation time of 0.8s.
 
 [back](.readme/back.png)
 
+## Watched Attributes
+
+This component watches two attributes:
+
+- face-up
+- animationtime
+
+face-up is described under the "boolean attributes" heading.
+
+### animationtime
+
+This attribute controls the animation time. The value should be the animation time in milliseconds.
+
 ## Boolean Attributes
 
 The component makes use of three boolean attributes:
@@ -36,7 +49,8 @@ If this attribute is present the element will not be displayed at all.
 ### disable
 
 If this attribute is present the element will become unflipable, but the
-current face will still be visible.
+current face will still be visible. Making a tile disabled mid-flip breaks
+the animation, but will give the correct resulting face.
 
 ## Styling parts
 
