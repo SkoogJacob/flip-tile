@@ -111,7 +111,7 @@ template.innerHTML = `
         opacity: 0.6;
     }
     :host([face-up][disabled]) #front { /* Keeps the front face visible if the card is face-up when disabled */
-        backface-visibility: visible;
+        transform: rotateY(180deg);
     }
   </style>
   
