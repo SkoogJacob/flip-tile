@@ -298,5 +298,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Test files
+test.html
+test.js
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,node,intellij+all,visualstudiocode,git
 

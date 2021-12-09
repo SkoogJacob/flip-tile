@@ -60,7 +60,6 @@ template.innerHTML = `
         background-color: ghostwhite;
         
         /* Flippity tippity */
-        transition: transform 0.8s;
         transform-style: preserve-3d;
     }
     #front, #back {
@@ -166,6 +165,18 @@ export default class FlipTile extends HTMLElement {
    * @type {boolean}
    */
   #inFlip
+  /**
+   * How long the flip animation is.
+   *
+   * @type {number}
+   */
+  #flipTime
+  /**
+   * Node containing a style tag containing the flip time rule.
+   *
+   * @type {Node}
+   */
+  #flipTimeStyle
 
   /**
    * Simple constructor to initialise private fields.
@@ -179,6 +190,9 @@ export default class FlipTile extends HTMLElement {
     this.#back = this.#shadow.getElementById('back')
     this.#clickListener = this.flip.bind(this)
     this.#inFlip = false
+    this.#flipTime = 800
+    this.#flipTimeStyle = FlipTile.#makeFlipTimeStyle(800)
+    this.#shadow.insertBefore(this.#flipTimeStyle, this.#tile)
   }
 
   /**
@@ -187,7 +201,7 @@ export default class FlipTile extends HTMLElement {
    * @returns {string[]} An array of observed attributes.
    */
   static get observedAttributes() {
-    return ['face-up']
+    return ['face-up', 'animationtime']
   }
 
   /**
@@ -203,6 +217,8 @@ export default class FlipTile extends HTMLElement {
         detail: {innerHTML: this.innerHTML.trim()},
         bubbles: true
       }))
+    } else if (name === 'animationtime') {
+      this.setFlipTime(Number.parseInt(newValue))
     }
   }
 
@@ -213,6 +229,7 @@ export default class FlipTile extends HTMLElement {
   connectedCallback() {
     if (!this.hasAttribute('tabindex')) this.setAttribute('tabindex', '0')
     if (!this.hasAttribute('role')) this.setAttribute('role', 'button')
+    if (this.hasAttribute('animationtime')) this.setFlipTime(Number.parseInt(this.getAttribute('animationtime')))
 
     this.#tile.addEventListener('click', this.#clickListener)
   }
@@ -249,6 +266,33 @@ export default class FlipTile extends HTMLElement {
     if (this.#inFlip) return
     this.#inFlip = true
     this.toggleAttribute('face-up')
-    window.setTimeout(() => { this.#inFlip = false }, 800)
+    window.setTimeout(() => { this.#inFlip = false }, this.#flipTime)
+  }
+
+  /**
+   * Sets a new flip time for the component.
+   *
+   * @param {number} newFlipTime
+   */
+  setFlipTime (newFlipTime) {
+    this.#flipTime = newFlipTime
+    this.#shadow.removeChild(this.#flipTimeStyle)
+    this.#flipTimeStyle = FlipTile.#makeFlipTimeStyle(newFlipTime)
+    this.#shadow.insertBefore(this.#flipTimeStyle, this.#tile)
+  }
+
+  /**
+   * Makes a style element with the flip animation time.
+   *
+   * @param {number} time The animation time in milliseconds.
+   * @returns {HTMLStyleElement} A template element containing a style tag.
+   */
+  static #makeFlipTimeStyle (time) {
+    const style = document.createElement('style')
+    style.innerHTML = `
+    #tile {
+        transition: transform ${time}ms;
+      }`
+    return style
   }
 }
