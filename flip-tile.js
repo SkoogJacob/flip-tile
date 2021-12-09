@@ -156,8 +156,16 @@ export default class FlipTile extends HTMLElement {
   #shadow
   /**
    * The event listener for the click (as it is created by bind, saving a pointer to it allows for easy deletion).
+   *
+   * @type {Function}
    */
   #clickListener
+  /**
+   * True if in flip transition.
+   *
+   * @type {boolean}
+   */
+  #inFlip
 
   /**
    * Simple constructor to initialise private fields.
@@ -170,6 +178,7 @@ export default class FlipTile extends HTMLElement {
     this.#front = this.#shadow.getElementById('front')
     this.#back = this.#shadow.getElementById('back')
     this.#clickListener = this.flip.bind(this)
+    this.#inFlip = false
   }
 
   /**
@@ -237,6 +246,9 @@ export default class FlipTile extends HTMLElement {
    * @param {MouseEvent} event the event fired to this event handler.
    */
   flip(event) {
+    if (this.#inFlip) return
+    this.#inFlip = true
     this.toggleAttribute('face-up')
+    window.setTimeout(() => { this.#inFlip = false }, 800)
   }
 }
