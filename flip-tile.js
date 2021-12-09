@@ -99,11 +99,6 @@ template.innerHTML = `
     :host([face-up]) #tile {
         transform: rotateY(180deg);
     }
-    /*
-    :host([hidden]) #front, :host([hidden]) #back {
-        opacity: 0;
-    }
-    */
     :host #tile:hover {
         border: 3px solid black;
     }
@@ -169,7 +164,7 @@ export default class FlipTile extends HTMLElement {
    */
   constructor() {
     super()
-    this.#shadow = this.attachShadow({mode: 'open'})
+    this.#shadow = this.attachShadow({ mode: 'open', delegatesFocus: true })
     this.#shadow.appendChild(template.content.cloneNode(true))
     this.#tile = this.#shadow.getElementById('tile')
     this.#front = this.#shadow.getElementById('front')
