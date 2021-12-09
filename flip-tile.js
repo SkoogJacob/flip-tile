@@ -99,7 +99,10 @@ template.innerHTML = `
     :host([face-up]) #tile {
         transform: rotateY(180deg);
     }
-    :host #tile:hover {
+    :host([face-up][disabled]) #front { /* Keeps the front face visible if the card is face-up when disabled */
+        transform: rotateY(180deg);
+    }
+    :host #tile:enabled:hover {
         border: 3px solid black;
     }
     :host([hidden]) #tile {
@@ -109,9 +112,6 @@ template.innerHTML = `
         cursor: default;
         border: 2px dashed ${lightGrey};
         opacity: 0.6;
-    }
-    :host([face-up][disabled]) #front { /* Keeps the front face visible if the card is face-up when disabled */
-        transform: rotateY(180deg);
     }
   </style>
   
