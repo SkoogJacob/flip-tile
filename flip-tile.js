@@ -100,7 +100,7 @@ template.innerHTML = `
         transform: rotateY(180deg);
     }
     :host([face-up][disabled]) #front { /* Keeps the front face visible if the card is face-up when disabled */
-        transform: rotateY(180deg);
+        backface-visibility: visible;
     }
     :host #tile:enabled:hover {
         border: 3px solid black;
