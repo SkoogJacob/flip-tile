@@ -12,6 +12,8 @@ has the innerHTML of the flipped element in 'event.detail.innerHTML'.
 For styling and control, the element has a couple of boolean attributes,
 styling parts, and slots.
 
+The flip has an animation time of 0.8s.
+
 [front](.readme/front.png)
 
 [back](.readme/back.png)
