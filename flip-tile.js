@@ -21,7 +21,7 @@
  * ---- used to style a hidden card
  *
  * @author Jacob Skoog
- * @version 1.0.9
+ * @version 1.0.10
  */
 
 // ############################# Defining the template element
