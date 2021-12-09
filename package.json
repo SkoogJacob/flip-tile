@@ -1,6 +1,6 @@
 {
   "name": "flip-tile",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A simple web component depicting a flippable tile. The tile has stylable front and back faces that can both take slottable content.",
   "main": "index.js",
   "scripts": {
