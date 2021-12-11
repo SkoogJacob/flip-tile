@@ -114,14 +114,14 @@ template.innerHTML = `
     }
   </style>
   
-  <div part="tile" id="tile">
+  <button part="tile" id="tile">
     <div part="back" id="back">
         <slot name="back-content"></slot>
     </div>
     <div part="front" id="front">
         <slot name="front-content"></slot>
     </div>
-  </div>
+  </button>
 `
 // ######################### END OF TEMPLATE ###########################################
 
